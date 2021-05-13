@@ -1,8 +1,8 @@
 /* Account for styles not carried over by Canvas to the Mobile App*/
 @import url(https://eacjason.github.io/ea-content/fontawesome-5.13.0/css/all.min.css);
 @import url(https://eacjason.github.io/ea-content/canvas-icons/canvas-icons2.css);
-@import url(app_canvas_styles.css);
-@import url(../ext/themes-payload.css);
+@import url(https://eacjason.github.io/ea-content/app_canvas_styles.css);
+@import url(https://eacjason.github.io/ea-content/themes-payload.css);
 .kl_app_only {display: block !important;}
 #kl_course_navigation,
 .kl_browser_only {display: none !important;}
