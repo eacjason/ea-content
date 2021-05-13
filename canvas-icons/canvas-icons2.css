@@ -1,7 +1,7 @@
 
-	@font-face{font-family:"InstructureIcons-Line"; src:url("https://designtools.ciditools.com/css/canvas-icons/InstructureIcons-Line.woff") format("woff"); font-weight:normal; font-style:normal }
+	@font-face{font-family:"InstructureIcons-Line"; src:url("https://eacjason.github.io/ea-content/canvas-icons/InstructureIcons-Line.woff") format("woff"); font-weight:normal; font-style:normal }
 	i[class*=icon-].icon-Line:before,i[class^=icon-].icon-Line:before,a[class*=icon-].icon-Line:before,a[class^=icon-].icon-Line:before{font-family:"InstructureIcons-Line"}
-	@font-face{font-family:"InstructureIcons-Solid"; src:url("https://designtools.ciditools.com/css/canvas-icons/InstructureIcons-Solid.woff") format("woff"); font-weight:normal; font-style:normal }
+	@font-face{font-family:"InstructureIcons-Solid"; src:url("https://eacjason.github.io/ea-content/canvas-icons/InstructureIcons-Solid.woff") format("woff"); font-weight:normal; font-style:normal }
 	i[class*=icon-].icon-Solid:before,i[class^=icon-].icon-Solid:before,a[class*=icon-].icon-Solid:before,a[class^=icon-].icon-Solid:before{font-family:"InstructureIcons-Solid"}
 	i[class*=icon-]:before,i[class^=icon-]:before,a[class*=icon-]:before,a[class^=icon-]:before{font-family:"InstructureIcons-Line";
 		display:inline-block;
