@@ -1,0 +1,8 @@
+/* Account for styles not carried over by Canvas to the Mobile App*/
+@import url(https://files.ciditools.com/fontawesome-5.13.0/css/all.min.css);
+@import url(canvas-icons/canvas-icons2.css);
+@import url(app_canvas_styles.css);
+@import url(../ext/themes-payload.css);
+.kl_app_only {display: block !important;}
+#kl_course_navigation,
+.kl_browser_only {display: none !important;}
