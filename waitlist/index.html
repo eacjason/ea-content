@@ -71,7 +71,7 @@
         .animated-card, .flow-step {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.3s ease-in-out;
         }
         .animated-card.is-visible, .flow-step.is-visible {
             opacity: 1;
@@ -79,7 +79,6 @@
         }
         .flow-step.is-active {
              border-color: #FEA400;
-             box-shadow: 0 0 15px rgba(254, 164, 0, 0.5);
         }
 
         /* Tooltip Styles */
@@ -304,14 +303,20 @@
                              entry.target.classList.add('is-active');
                         }
 
-                        // We can unobserve the main cards, but keep observing flow-steps if we want active highlighting logic later
+                         // We can unobserve the main cards, but we'll keep observing the flow steps
+                         // in case we want to de-activate them when they scroll out of view.
                          if (entry.target.classList.contains('animated-card')) {
                              observer.unobserve(entry.target);
                          }
+                    } else {
+                        // Optional: remove active class when scrolling up
+                        if (entry.target.classList.contains('flow-step')) {
+                             entry.target.classList.remove('is-active');
+                        }
                     }
                 });
             }, {
-                threshold: 0.15 // A little more of the element should be visible
+                threshold: 0.2 // Element needs to be 20% in view
             });
 
             animatedElements.forEach(el => {
