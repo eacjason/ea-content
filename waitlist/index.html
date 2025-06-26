@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Anthology Waitlist Process</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!--
+    Infographic Plan:
+    Narrative Structure:
+    1.  Introduction: High-level overview of the waitlist process.
+    2.  The Student Journey: A consolidated flowchart showing the entire student experience, including the queue moving to the next student.
+    3.  Key Waitlist Parameters: KPI cards showing the specific rules (10 students, 7 credits, 24 hours, etc.).
+    4.  Lifecycle: Illustrates the start and end of the waitlist based on the add/drop deadline.
+
+    Color Palette Selection: "EAC Colors" (#510C76, #FEA400, #54565A, #A77BC8, #EA0029, #81BC41). This provides a branded, professional, high-contrast theme.
+
+    Visualization Choices & Justification (NO SVG, NO MERMAID JS):
+    -   All Flowcharts: Goal: Organize. Method: Structured HTML/CSS with Tailwind. This is the most effective way to show the process steps without using prohibited libraries or formats. Divs act as nodes and borders/pseudo-elements create connectors.
+    -   Key Parameters: Goal: Inform. Method: Large, styled text cards (HTML/CSS). This gives immediate visual weight to the core rules of the system.
+    
+    Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. All diagrams are built with structured HTML and styled with Tailwind CSS. All charts are rendered to a canvas element by Chart.js.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Tailwind gray-100 */
+        }
+        .flow-node {
+            border: 2px solid #510C76;
+            background-color: #ffffff;
+            color: #510C76;
+        }
+        .flow-arrow {
+            color: #A77BC8;
+            font-weight: 900;
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .flow-line {
+            width: 2px;
+            background-color: #A77BC8;
+            height: 2rem;
+            margin: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .kpi-number {
+            color: #FEA400;
+            font-weight: 900;
+        }
+        .kpi-text {
+            color: #510C76;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="text-[#510C76]">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#510C76] mb-2">The Waitlist Process</h1>
+            <p class="text-lg md:text-xl text-[#54565A] max-w-3xl mx-auto">A visual guide to the automated, first come, first served waitlist system at Eastern Arizona College</p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="student-journey" class="card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">The Student Journey</h2>
+                <p class="text-center text-[#54565A] max-w-2xl mx-auto mb-10">From joining the list to claiming a seat, here is the automated path a student follows.</p>
+                <div class="flex flex-col items-center">
+                    <div class="flow-node w-full max-w-md p-4 rounded-lg text-center shadow-lg">
+                        <div class="font-bold text-lg">1. Student Joins Waitlist</div>
+                        <p class="text-sm">During registration for a full course, the student selects the "Waitlist" action. They are placed on the list and receive a confirmation email.</p>
+                    </div>
+                    <div class="flow-line" style="height: 1rem;"></div>
+                    <div class="flow-arrow" style="font-size: 1.5rem; line-height: 1;">&darr;</div>
+                    <div class="flow-line" style="height: 1rem;"></div>
+                    <div class="w-full max-w-md p-3 rounded-lg text-center shadow-md" style="background-color: #f0f4f8; border: 2px dashed #A77BC8;">
+                        <div class="font-bold text-lg" style="color: #510C76;">Pro Tip</div>
+                        <p class="text-sm" style="color: #54565A;">Check your student email daily. Your 24-hour reservation window starts the moment the offer is sent.</p>
+                    </div>
+                    <div class="flow-line" style="height: 1rem;"></div>
+                    <div class="flow-arrow" style="font-size: 1.5rem; line-height: 1;">&darr;</div>
+                    <div class="flow-line" style="height: 1rem;"></div>
+                    <div class="flow-node w-full max-w-md p-4 rounded-lg text-center shadow-lg bg-[#FEA400] text-white">
+                        <div class="font-bold text-lg">2. A Seat Becomes Available</div>
+                        <p class="text-sm">A registered student drops the course or capacity is increased.</p>
+                    </div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow">&darr;</div>
+                    <div class="flow-line"></div>
+                     <div class="flow-node w-full max-w-md p-4 rounded-lg text-center shadow-lg" style="border-width: 4px; border-color: #EA0029;">
+                        <div class="font-bold text-lg">3. Offer Sent to Student #1</div>
+                        <p class="text-sm font-semibold" style="color: #EA0029;">An email is sent. The 24-hour clock starts now. ⏰</p>
+                    </div>
+                     <div class="flow-line"></div>
+                    <div class="flow-arrow">&darr;</div>
+                    <div class="flow-line"></div>
+                     <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                        <div class="text-center">
+                            <div class="flow-node p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #81BC41;">
+                                <div class="font-bold text-lg" style="color: #81BC41;">Success</div>
+                                <p class="text-sm">Student registers in time. The seat is filled and the process ends.</p>
+                            </div>
+                        </div>
+                        <div class="relative text-center">
+                            <div class="flow-node p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #EA0029;">
+                                <div class="font-bold text-lg" style="color: #EA0029;">Seat Forfeited</div>
+                                <p class="text-sm">The 24-hour window expires without registration.</p>
+                            </div>
+                            <div class="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 flow-arrow">&rarr;</div>
+                             <div class="block md:hidden text-center flow-arrow my-2">&darr;</div>
+                        </div>
+                     </div>
+                     <div class="hidden md:block w-full max-w-4xl mx-auto">
+                        <div class="text-center" style="margin-left: 50%;">
+                            <div class="flow-line"></div>
+                            <div class="flow-arrow">&darr;</div>
+                            <div class="flow-line"></div>
+                        </div>
+                     </div>
+                    <div class="flow-node w-full max-w-lg p-4 rounded-lg text-center shadow-lg">
+                        <div class="font-bold text-lg">4. Offer Sent to Student #2</div>
+                        <p class="text-sm">The process repeats with the next student in line until the seat is filled.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="key-parameters" class="card p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">Key Waitlist Parameters</h2>
+                <p class="text-center text-[#54565A] max-w-2xl mx-auto mb-10">The entire waitlist ecosystem is governed by these core institutional rules.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-text text-xl">Priority Rule</div>
+                        <div class="kpi-number text-4xl mt-2">First Come,<br>First Served</div>
+                        <p class="text-sm text-[#54565A] mt-2">The queue is based strictly on when a student joins the waitlist.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-text text-xl">Waitlist Capacity</div>
+                        <div class="kpi-number text-6xl md:text-7xl">10</div>
+                        <p class="text-sm text-[#54565A] mt-2">A maximum of 10 students are allowed on the waitlist for a section.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-text text-xl">Student Limit</div>
+                        <div class="kpi-number text-6xl md:text-7xl">7</div>
+                        <p class="text-sm text-[#54565A] mt-2">A student may be on waitlists for a maximum of 7 credits at one time.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-text text-xl">Reservation Window</div>
+                        <div class="kpi-number text-6xl md:text-7xl">24</div>
+                        <p class="text-sm text-[#54565A] mt-2">Hours a student has to register once a seat is offered.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="lifecycle" class="card p-6 md:p-8">
+                 <h2 class="text-3xl font-bold text-center mb-8">Waitlist Lifecycle</h2>
+                 <div class="flex items-center justify-center space-x-4 md:space-x-8 text-center">
+                    <div class="flex-1">
+                        <div class="p-4 bg-[#81BC41] text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto shadow-lg">
+                            <span class="font-bold">START</span>
+                        </div>
+                        <p class="mt-4 text-[#54565A] font-semibold">Students have the option to join a waitlist for a full course.</p>
+                    </div>
+                    <div class="flex-1 h-1 bg-gray-300 rounded-full"></div>
+                     <div class="flex-1">
+                        <div class="p-4 bg-[#EA0029] text-white rounded-full w-24 h-24 flex items-center justify-center mx-auto shadow-lg">
+                            <span class="font-bold">END</span>
+                        </div>
+                        <p class="mt-4 text-[#54565A] font-semibold">Waitlist is purged after the last day to add/drop.</p>
+                    </div>
+                 </div>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
