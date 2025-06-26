@@ -34,6 +34,7 @@
             border: 2px solid #510C76;
             background-color: #ffffff;
             color: #510C76;
+            transition: border-color 0.3s ease;
         }
         .flow-arrow {
             color: #A77BC8;
@@ -65,6 +66,101 @@
             color: #510C76;
             font-weight: 700;
         }
+
+        /* Animation Styles */
+        .animated-card, .flow-step {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-card.is-visible, .flow-step.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .flow-step.is-active {
+             border-color: #FEA400;
+             box-shadow: 0 0 15px rgba(254, 164, 0, 0.5);
+        }
+
+        /* Tooltip Styles */
+        .kpi-card {
+            position: relative;
+        }
+        .kpi-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 200px;
+            background-color: #54565A;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%;
+            left: 50%;
+            margin-left: -100px;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+            font-weight: normal;
+        }
+        .kpi-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #54565A transparent transparent transparent;
+        }
+        .kpi-card:hover .kpi-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Print-Friendly Styles */
+        @media print {
+            body {
+                background-color: #ffffff;
+                color: #000000;
+                font-family: sans-serif;
+            }
+            .card, .animated-card, .flow-step {
+                box-shadow: none;
+                border: 1px solid #cccccc;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-inside: avoid;
+            }
+            header, .flow-arrow, .flow-line {
+                display: none;
+            }
+            main {
+                space-y-16: 0;
+            }
+            section {
+                margin-bottom: 2rem;
+            }
+            h1, h2, .kpi-text, .flow-node {
+                color: #000000 !important;
+            }
+            .kpi-number {
+                color: #555555 !important;
+            }
+            .flow-node, .pro-tip-box {
+                background-color: #ffffff !important;
+            }
+            .grid {
+                display: block !important;
+            }
+            .kpi-card {
+                 margin-bottom: 1rem;
+            }
+            .kpi-tooltip {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="text-[#510C76]">
@@ -78,32 +174,32 @@
 
         <main class="space-y-16">
 
-            <section id="student-journey" class="card p-6 md:p-8">
+            <section id="student-journey" class="card animated-card p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-center mb-8">The Student Journey</h2>
                 <p class="text-center text-[#54565A] max-w-2xl mx-auto mb-10">From joining the list to claiming a seat, here is the automated path a student follows.</p>
                 <div class="flex flex-col items-center">
-                    <div class="flow-node w-full max-w-md p-4 rounded-lg text-center shadow-lg">
+                    <div class="flow-node flow-step w-full max-w-md p-4 rounded-lg text-center shadow-lg">
                         <div class="font-bold text-lg">1. Student Joins Waitlist</div>
                         <p class="text-sm">During registration for a full course, the student selects the "Waitlist" action. They are placed on the list and receive a confirmation email.</p>
                     </div>
                     <div class="flow-line" style="height: 1rem;"></div>
                     <div class="flow-arrow" style="font-size: 1.5rem; line-height: 1;">&darr;</div>
                     <div class="flow-line" style="height: 1rem;"></div>
-                    <div class="w-full max-w-md p-3 rounded-lg text-center shadow-md" style="background-color: #f0f4f8; border: 2px dashed #A77BC8;">
+                    <div class="pro-tip-box flow-step w-full max-w-md p-3 rounded-lg text-center shadow-md" style="background-color: #f0f4f8; border: 2px dashed #A77BC8;">
                         <div class="font-bold text-lg" style="color: #510C76;">Pro Tip</div>
                         <p class="text-sm" style="color: #54565A;">Check your student email daily. Your 24-hour reservation window starts the moment the offer is sent.</p>
                     </div>
                     <div class="flow-line" style="height: 1rem;"></div>
                     <div class="flow-arrow" style="font-size: 1.5rem; line-height: 1;">&darr;</div>
                     <div class="flow-line" style="height: 1rem;"></div>
-                    <div class="flow-node w-full max-w-md p-4 rounded-lg text-center shadow-lg bg-[#FEA400] text-white">
+                    <div class="flow-node flow-step w-full max-w-md p-4 rounded-lg text-center shadow-lg bg-[#FEA400] text-white">
                         <div class="font-bold text-lg">2. A Seat Becomes Available</div>
                         <p class="text-sm">A registered student drops the course or capacity is increased.</p>
                     </div>
                     <div class="flow-line"></div>
                     <div class="flow-arrow">&darr;</div>
                     <div class="flow-line"></div>
-                     <div class="flow-node w-full max-w-md p-4 rounded-lg text-center shadow-lg" style="border-width: 4px; border-color: #EA0029;">
+                     <div class="flow-node flow-step w-full max-w-md p-4 rounded-lg text-center shadow-lg" style="border-width: 4px; border-color: #EA0029;">
                         <div class="font-bold text-lg">3. Offer Sent to Student #1</div>
                         <p class="text-sm font-semibold" style="color: #EA0029;">An email is sent. The 24-hour clock starts now. ⏰</p>
                     </div>
@@ -112,13 +208,13 @@
                     <div class="flow-line"></div>
                      <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                         <div class="text-center">
-                            <div class="flow-node p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #81BC41;">
+                            <div class="flow-node flow-step p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #81BC41;">
                                 <div class="font-bold text-lg" style="color: #81BC41;">Success</div>
                                 <p class="text-sm">Student registers in time. The seat is filled and the process ends.</p>
                             </div>
                         </div>
                         <div class="relative text-center">
-                            <div class="flow-node p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #EA0029;">
+                            <div class="flow-node flow-step p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #EA0029;">
                                 <div class="font-bold text-lg" style="color: #EA0029;">Seat Forfeited</div>
                                 <p class="text-sm">The 24-hour window expires without registration.</p>
                             </div>
@@ -133,33 +229,37 @@
                             <div class="flow-line"></div>
                         </div>
                      </div>
-                    <div class="flow-node w-full max-w-lg p-4 rounded-lg text-center shadow-lg">
+                    <div class="flow-node flow-step w-full max-w-lg p-4 rounded-lg text-center shadow-lg">
                         <div class="font-bold text-lg">4. Offer Sent to Student #2</div>
                         <p class="text-sm">The process repeats with the next student in line until the seat is filled.</p>
                     </div>
                 </div>
             </section>
             
-            <section id="key-parameters" class="card p-6 md:p-8">
+            <section id="key-parameters" class="card animated-card p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-center mb-8">Key Waitlist Parameters</h2>
                 <p class="text-center text-[#54565A] max-w-2xl mx-auto mb-10">The entire waitlist ecosystem is governed by these core institutional rules.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                    <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="kpi-card p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-tooltip">This is the most straightforward method, ensuring fairness based on who signed up first.</div>
                         <div class="kpi-text text-xl">Priority Rule</div>
                         <div class="kpi-number text-4xl mt-2">First Come,<br>First Served</div>
                         <p class="text-sm text-[#54565A] mt-2">The queue is based strictly on when a student joins the waitlist.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="kpi-card p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-tooltip">This cap prevents waitlists from becoming unmanageably long for popular courses.</div>
                         <div class="kpi-text text-xl">Waitlist Capacity</div>
                         <div class="kpi-number text-6xl md:text-7xl">10</div>
                         <p class="text-sm text-[#54565A] mt-2">A maximum of 10 students are allowed on the waitlist for a section.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="kpi-card p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-tooltip">This rule ensures a student doesn't take up waitlist spots for an entire semester's worth of classes.</div>
                         <div class="kpi-text text-xl">Student Limit</div>
                         <div class="kpi-number text-6xl md:text-7xl">7</div>
                         <p class="text-sm text-[#54565A] mt-2">A student may be on waitlists for a maximum of 7 credits at one time.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
+                    <div class="kpi-card p-6 bg-gray-50 rounded-lg">
+                        <div class="kpi-tooltip">This countdown includes nights and weekends! Check your email to avoid missing your chance.</div>
                         <div class="kpi-text text-xl">Reservation Window</div>
                         <div class="kpi-number text-6xl md:text-7xl">24</div>
                         <p class="text-sm text-[#54565A] mt-2">Hours a student has to register once a seat is offered.</p>
@@ -167,7 +267,7 @@
                 </div>
             </section>
             
-            <section id="lifecycle" class="card p-6 md:p-8">
+            <section id="lifecycle" class="card animated-card p-6 md:p-8">
                  <h2 class="text-3xl font-bold text-center mb-8">Waitlist Lifecycle</h2>
                  <div class="flex items-center justify-center space-x-4 md:space-x-8 text-center">
                     <div class="flex-1">
@@ -189,6 +289,36 @@
         </main>
 
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animated-card, .flow-step');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        
+                        // Add active class for highlighting flow steps
+                        if (entry.target.classList.contains('flow-step')) {
+                             entry.target.classList.add('is-active');
+                        }
+
+                        // We can unobserve the main cards, but keep observing flow-steps if we want active highlighting logic later
+                         if (entry.target.classList.contains('animated-card')) {
+                             observer.unobserve(entry.target);
+                         }
+                    }
+                });
+            }, {
+                threshold: 0.15 // A little more of the element should be visible
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 
 </body>
 </html>
