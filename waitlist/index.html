@@ -190,7 +190,7 @@
                      <div class="flow-line"></div>
                     <div class="flow-arrow">&darr;</div>
                     <div class="flow-line"></div>
-                     <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                     <div class="w-full max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 relative">
                         <div class="text-center">
                             <div class="flow-node flow-step p-4 rounded-lg shadow-lg h-full flex flex-col justify-center" style="border-color: #81BC41;">
                                 <div class="font-bold text-lg" style="color: #81BC41;">You Got In!</div>
@@ -202,17 +202,12 @@
                                 <div class="font-bold text-lg" style="color: #EA0029;">You Missed It</div>
                                 <p class="text-sm">The 24-hour time limit passed without you registering.</p>
                             </div>
-                            <div class="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 flow-arrow">&rarr;</div>
-                             <div class="block md:hidden text-center flow-arrow my-2">&darr;</div>
+                             <div class="absolute -bottom-12 left-1/2 -translate-x-1/2">
+                                <div class="flow-arrow">&darr;</div>
+                             </div>
                         </div>
                      </div>
-                     <div class="hidden md:block w-full max-w-4xl mx-auto">
-                        <div class="text-center" style="margin-left: 50%;">
-                            <div class="flow-line"></div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-line"></div>
-                        </div>
-                     </div>
+                     <div class="h-16"></div>
                     <div class="flow-node flow-step w-full max-w-lg p-4 rounded-lg text-center shadow-lg">
                         <div class="font-bold text-lg">4. The Next Person Gets a Chance</div>
                         <p class="text-sm">The offer goes to the next student on the list, and the process repeats.</p>
